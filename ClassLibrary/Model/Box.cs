@@ -6,13 +6,13 @@ namespace ClassLibrary.Model
 {
     public class Box : DimensionsBase, IBox
     {
-        public Box(string id, double length, double height, double width, double scale) : base(length, height, width, scale)
+
+
+        public Box(string id, DateOnly? expirationDate, DateOnly? productionDate, int countDay, 
+                         double length, double height, double width, double scale) 
+                     : base(length, height, width, scale)
         {
             Id = id;
-        }
-
-        public Box(string id, DateOnly? expirationDate, DateOnly? productionDate, int countDay, double length, double height, double width, double scale) : this(id, length, height, width, scale)
-        {
             if (expirationDate != null)
             {
                 ExpirationDate = expirationDate.Value;
