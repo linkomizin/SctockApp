@@ -4,7 +4,7 @@ using ClassLibrary.Services;
 
 namespace ClassLibrary.Model
 {
-    public class Box : DimensionsBase , IBox
+    public class Box : DimensionsBase, IBox
     {
         public Box(string id, double length, double height, double width, double scale) : base(length, height, width, scale)
         {
@@ -13,30 +13,30 @@ namespace ClassLibrary.Model
 
         public Box(string id, DateOnly? expirationDate, DateOnly? productionDate, int countDay, double length, double height, double width, double scale) : this(id, length, height, width, scale)
         {
-            if (expirationDate!=null)
+            if (expirationDate != null)
             {
-                 ExpirationDate = expirationDate.Value;
+                ExpirationDate = expirationDate.Value;
             }
-           
+
             ProductionDate = productionDate;
             CalcDayExpiration(countDay);
         }
 
         private void CalcDayExpiration(int countDay)
         {
-            if (ProductionDate!= null)
+            if (ProductionDate != null)
             {
-                var dateOnlyNow = DateOnly.FromDateTime( DateTime.Now);
-                ExpirationDate = DateOnly.FromDayNumber(dateOnlyNow.DayNumber - ProductionDate.Value.DayNumber +countDay);
+                var dateOnlyNow = DateOnly.FromDateTime(DateTime.Now);
+                ExpirationDate = DateOnly.FromDayNumber(dateOnlyNow.DayNumber - ProductionDate.Value.DayNumber + countDay);
             }
         }
 
         #region Region fields
 
-
         private string _id;
         private DateOnly _expirationDate;
         private DateOnly? _productionDate;
+
 
         #endregion
         #region Region property
@@ -46,8 +46,7 @@ namespace ClassLibrary.Model
             get => _id;
             set => _id = value;
         }
-
-        public DateOnly ExpirationDate
+        public override DateOnly ExpirationDate
         {
             get => _expirationDate;
             set => _expirationDate = value;
@@ -58,7 +57,6 @@ namespace ClassLibrary.Model
             get => _productionDate;
             set => _productionDate = value;
         }
-
         #endregion
 
         #region Region IBox interface

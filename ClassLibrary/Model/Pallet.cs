@@ -9,6 +9,8 @@ namespace ClassLibrary.Model
     public class Pallet : DimensionsBase
     {
         private string _id;
+        private DateOnly _expirationDate;
+        private DateOnly? _productionDate;
         private List<Box> _boxes;
         public Pallet(string id, double length, double height, double width, double scale) : base(length, height, width, scale)
         {
@@ -51,9 +53,21 @@ namespace ClassLibrary.Model
             {
                 double sumBoxes = Boxes
                     .AsParallel()
-                    .Sum(box =>box.Volume) ;
+                    .Sum(box => box.Volume);
                 return sumBoxes + base.Volume;
             }
         }
+
+        public override DateOnly ExpirationDate
+        {
+            get
+            {
+                return _boxes
+                    .AsParallel()
+                    .Max(el=>el.ExpirationDate);
+            }
+            set { _ = value; }
+        }
+         
     }
 }

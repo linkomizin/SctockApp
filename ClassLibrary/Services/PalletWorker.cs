@@ -15,6 +15,11 @@ namespace ClassLibrary.Services
 
         private ICanAddpallet _canAddpallet;
 
+        public ICanAddpallet CanAddPallet
+        {
+            get { return _canAddpallet; }
+            set { _canAddpallet = value; }
+        }
         public Pallet SelectedPallet
         {
             get => _pallet;
@@ -51,10 +56,7 @@ namespace ClassLibrary.Services
 
         public DateOnly GetExpirationDatePallet()
         {
-            var expirationDate = SelectedPallet.Boxes
-                .AsParallel()
-                .Min(box => box.ExpirationDate);
-            return expirationDate;
+            return SelectedPallet.ExpirationDate;
         }
     }
 }

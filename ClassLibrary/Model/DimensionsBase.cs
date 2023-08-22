@@ -7,6 +7,7 @@
         private double _height;
         private double _scale;
         private double _volume;
+
         public DimensionsBase(double length, double height, double width, double scale)
         {
             Length = length;
@@ -47,5 +48,10 @@
             get => _volume;
             private set => _volume = value;
         }
+
+        public abstract DateOnly ExpirationDate { get; set; }
+
+
+
     }
 }
