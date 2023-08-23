@@ -35,7 +35,7 @@ namespace ClassLibrary.GeneratorObject
                 length: (_random.NextDouble() + minimalNum) * maxL,
                   height: (_random.NextDouble() + minimalNum) * maxH,
                   width: (_random.NextDouble() + minimalNum) * maxW,
-                  scale: standartScale);
+                  scale: standardScale);
         }
     }
 }
