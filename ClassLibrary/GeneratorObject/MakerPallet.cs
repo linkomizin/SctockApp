@@ -15,22 +15,27 @@ namespace ClassLibrary.GeneratorObject
             _random = new Random();
         }
 
-        public List<Pallet> MakePallets(int totalCount, double minimalNum, double maxH, double maxW, double maxL, double scale = 30)
+        public List<Pallet> MakePallets(int totalCount, double minimalNum, double maxH, double maxW, double maxL, double standartScale = 30)
         {
             List<Pallet> pallets = new List<Pallet>();
 
+            for (int i = 0; i < totalCount; i++)
+            {
+                var item = MakePallet(minimalNum, maxH, maxW, maxL, standartScale);
+                pallets.Add(item);
+            }
 
             return pallets;
         }
 
-        private Pallet MakePallet(double minimalNum, double maxH, double maxW, double maxL, double scale)
+        private Pallet MakePallet(double minimalNum, double maxH, double maxW, double maxL, double standartScale)
         {
             return new Pallet(
-                string id,
-                double length,
-                double height,
-                double width,
-                double scale);
+                id: Guid.NewGuid().ToString(),
+                length: (_random.NextDouble() + minimalNum) * maxL,
+                  height: (_random.NextDouble() + minimalNum) * maxH,
+                  width: (_random.NextDouble() + minimalNum) * maxW,
+                  scale: standartScale);
         }
     }
 }

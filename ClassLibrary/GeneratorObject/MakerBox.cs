@@ -16,7 +16,7 @@ namespace ClassLibrary.GeneratorObject
             _random = new Random();
         }
 
-        public List<Box> CreateBoxes(int totalCount, int countDayExp = 100, int minimalDay, double minimalNum, double maxH, double maxW, double maxL, double maxScale)
+        public List<Box> CreateBoxes(int totalCount, int minimalDay, double minimalNum, double maxH, double maxW, double maxL, double maxScale, int countDayExp = 100)
         {
             List<Box> boxes = new List<Box>();
 
@@ -25,14 +25,14 @@ namespace ClassLibrary.GeneratorObject
                 var item = CreateBox(minimalNum, countDayExp, minimalDay, maxH, maxW, maxL, maxScale);
                 boxes.Add(item);
             }
-
-            
-            return new List<Box>();
+            return boxes;
         }
 
         private Box CreateBox(double minimalNum, int countDayExp, int minimalDay, double maxH, double maxW, double maxL, double maxScale)
         {
+            //from null or not null set productionDate
             int num = _random.Next(0, 2);
+
             return new Box(
                 id: Guid.NewGuid().ToString(),
                 expirationDate: DateOnly.FromDayNumber(_random.Next(minimalDay, DateOnly.FromDateTime(DateTime.Now).DayNumber + countDayExp + 1)),
