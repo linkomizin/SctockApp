@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.GeneratorObject;
 using ClassLibrary.Model;
+using ClassLibrary.ViewHandler;
 
 namespace ClassLibrary.Worker
 {
@@ -13,10 +14,12 @@ namespace ClassLibrary.Worker
         private MakerBox _makerBox;
         private MakerPallet _makerPallet;
 
-        private List<Box> _boxList;
-        private List<Pallet> _palletList;
+        private IEnumerable<Box> _boxList;
+        private IEnumerable<Pallet> _palletList;
 
-        private 
+        private ICanAddpallet _canAddpallet;
+
+        private IViewHandler _viewHandler;
 
 
     }
