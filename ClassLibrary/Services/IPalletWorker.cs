@@ -7,7 +7,7 @@ using ClassLibrary.Model;
 
 namespace ClassLibrary.Services
 {
-    public interface IPallet
+    public interface IPalletWorker
     {
         bool AddBox(Box box);
         void RemoveBox(Box box);

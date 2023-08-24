@@ -7,7 +7,7 @@ using ClassLibrary.Model;
 
 namespace ClassLibrary.Services
 {
-    public class PalletWorker : IPallet
+    public class PalletWorker : IPalletWorker
     {
 
 

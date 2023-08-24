@@ -1,7 +1,10 @@
-﻿using System;
+﻿using ClassLibrary.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace ClassLibrary.ViewHandler
@@ -13,9 +16,13 @@ namespace ClassLibrary.ViewHandler
             throw new NotImplementedException();
         }
 
-        public void DisplayPallet()
+        public void DisplayPallet(IEnumerable<Pallet>pallets)
         {
-            throw new NotImplementedException();
+             pallets.ToList().ForEach(pallet =>  
+             {
+                 Console.WriteLine(pallet);
+                 Console.WriteLine();
+             });
         }
     }
 }
