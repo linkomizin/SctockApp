@@ -9,21 +9,34 @@ namespace ClassLibrary.Sorter
 {
     public class SorterPallet : ISorter<Pallet>
     {
-        public void GroupByMax(IEnumerable<Pallet> values)
+        public Dictionary<DateOnly, List<Pallet>> GroupByMax(IEnumerable<Pallet> values)
         {
             var res = values
-                .GroupBy(x => x.ExpirationDate, x => x)
-                ;
+                .GroupBy(x => x.ExpirationDate)
+                .OrderByDescending(el => el.Key)
+                .ToDictionary(k => k.Key, pa => pa
+                                                .Select(el => el)
+                                                .OrderByDescending(el => el.Volume)
+                                                .ToList());
+            return res;
         }
 
-        public void GroupByMin(IEnumerable<Pallet> values)
+        public Dictionary<DateOnly, List<Pallet>> GroupByMin(IEnumerable<Pallet> values)
         {
-             
+            var res = values
+               .GroupBy(x => x.ExpirationDate)
+               .OrderBy(el => el.Key)
+               .ToDictionary(
+                                k => k.Key,
+                                 pa => pa
+                                 .Select(el => el)
+                                    .OrderByDescending(el => el.Volume)
+                                    .ToList());
+            return res;
         }
-
         public void SortAB(IEnumerable<Pallet> values)
         {
-            values.OrderBy(el=>el.Volume);
+            values.OrderBy(el => el.Volume);
         }
 
         public void SortBA(IEnumerable<Pallet> values)

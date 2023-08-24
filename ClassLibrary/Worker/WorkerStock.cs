@@ -69,9 +69,13 @@ namespace ClassLibrary.Worker
 
         private void SortPalletSet()
         {
-               _sorter.SortAB(_palletList);
-            _palletList.OrderBy(el => el.ExpirationDate);
+            _sorter.SortAB(_palletList);
         }
+        public void GroupPalletSet()
+        {
+            var res =  _sorter.GroupByMin(_palletList);
+        }
+
 
         private void PrintConsoleListPallet()
         {

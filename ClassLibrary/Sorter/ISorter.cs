@@ -11,7 +11,7 @@ namespace ClassLibrary.Sorter
     {
         void SortAB(IEnumerable<T> values);
         void SortBA(IEnumerable<Pallet> values);
-        void GroupByMin(IEnumerable<Pallet> values);
-        void GroupByMax(IEnumerable<Pallet> values);
+        Dictionary<DateOnly, List<T>> GroupByMin(IEnumerable<Pallet> values);
+        Dictionary<DateOnly, List<T>> GroupByMax(IEnumerable<Pallet> values);
     }
 }

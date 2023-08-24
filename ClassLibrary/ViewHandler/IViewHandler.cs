@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace ClassLibrary.ViewHandler
     public interface IViewHandler
     {
         void DisplayMenu();
-        void DisplayPallet(IEnumerable<Pallet> pallets);
+        //void DisplayPallet(List<Pallet> pallets);
+        void DisplayPallet(ICollection pallets);
 
     }
 }
