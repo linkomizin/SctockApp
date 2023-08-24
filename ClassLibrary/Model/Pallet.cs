@@ -70,7 +70,7 @@ namespace ClassLibrary.Model
         }
         public override string ToString()
         {
-            return $"Box id {Id}, {base.ToString()},Volume: {Volume}, Scale: {Scale}, Count boxes: {Boxes.Count}" +
+            return $"Pallet id {Id}, {base.ToString()},Volume: {Volume}, Scale: {Scale}, Count boxes: {Boxes.Count}" +
                 $" ExpirationDate {ExpirationDate.ToString()}";
         }
 

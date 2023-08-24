@@ -13,5 +13,6 @@ namespace ClassLibrary.Sorter
         void SortBA(IEnumerable<Pallet> values);
         Dictionary<DateOnly, List<T>> GroupByMin(IEnumerable<Pallet> values);
         Dictionary<DateOnly, List<T>> GroupByMax(IEnumerable<Pallet> values);
+        List<Pallet> TakeCountPalletByMaxDate(int count, IEnumerable<Pallet> values);
     }
 }

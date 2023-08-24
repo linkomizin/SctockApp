@@ -43,5 +43,14 @@ namespace ClassLibrary.Sorter
         {
             values.OrderByDescending(el => el.Volume);
         }
+
+        public List<Pallet> TakeCountPalletByMaxDate(int count, IEnumerable<Pallet> values)
+        {
+            var res = values
+                .OrderByDescending(x=>x.ExpirationDate)
+                .Take(count)
+                .ToList();
+            return res;
+        }
     }
 }

@@ -25,8 +25,7 @@ namespace ClassLibrary.Services
             get => _pallet;
             set => _pallet = value;
         }
-
-
+  
         public bool AddBox(Box box)
         {
 

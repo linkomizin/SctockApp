@@ -18,6 +18,7 @@ namespace ClassLibrary.Worker
 
         private List<Box> _boxList;
         private List<Pallet> _palletList;
+        private Dictionary<DateOnly, List<Pallet>> _datePalletsDict;
 
         private IPalletWorker _palletWorker;
         private ICanAddpallet _canAddpallet;
@@ -26,6 +27,7 @@ namespace ClassLibrary.Worker
 
         private ISorter<Pallet> _sorter;
 
+        
         public WorkerStock(MakerBox makerBox, MakerPallet makerPallet,
             List<Box> boxList, List<Pallet> palletList,
             ICanAddpallet canAddpallet, IViewHandler viewHandler, IPalletWorker palletWorker, ISorter<Pallet> sorter)
@@ -48,14 +50,17 @@ namespace ClassLibrary.Worker
 
         public void AddBoxesToPallets(int countBoxToPallet = 10)
         {
+            _palletWorker.CanAddPallet = _canAddpallet; 
             for (int i = 0; i < _palletList.Count(); i++)
             {
+                _palletWorker.SelectedPallet = _palletList[i];
                 AddBoxToSelectedPallet(_palletList[i], countBoxToPallet);
             }
         }
 
         private void AddBoxToSelectedPallet(Pallet pallet, int countBoxToPallet)
         {
+            List<Box> boxesToRemove = new List<Box>();
 
             for (int i = 0; i < countBoxToPallet; i++)
             {
@@ -63,23 +68,33 @@ namespace ClassLibrary.Worker
                 if (canAddByGabarit == true)
                 {
                     _palletWorker.AddBox(_boxList[i]);
+                    boxesToRemove.Add(_boxList[i]);
                 }
             }
+            boxesToRemove.ForEach(box => _boxList.Remove(box));
         }
 
-        private void SortPalletSet()
+        public void SortPalletSet()
         {
             _sorter.SortAB(_palletList);
         }
         public void GroupPalletSet()
         {
-            var res =  _sorter.GroupByMin(_palletList);
+            _datePalletsDict = _sorter.GroupByMin(_palletList);
+        }
+        public void TakeCountPalletByMaxDate()
+        {
+            var res = _sorter.TakeCountPalletByMaxDate(3, _palletList);
+            ViewPallet(res);
+        }
+        public void ViewPallet(Dictionary<DateOnly, List<Pallet>> datePalletsDict)
+        {
+            _viewHandler.DisplayPallet(datePalletsDict);
         }
 
-
-        private void PrintConsoleListPallet()
+        public void ViewPallet(List<Pallet> pallets)
         {
-            _viewHandler.DisplayPallet(_palletList);
+            _viewHandler.DisplayPallet(pallets);
         }
     }
 }
