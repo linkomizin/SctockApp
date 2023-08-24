@@ -68,6 +68,11 @@ namespace ClassLibrary.Model
             }
             set { _ = value; }
         }
-         
+        public override string ToString()
+        {
+            return $"Box id {Id}, {base.ToString()},Volume: {Volume}, Scale: {Scale}, Count boxes: {Boxes.Count}" +
+                $" ExpirationDate {ExpirationDate.ToString()}";
+        }
+
     }
 }

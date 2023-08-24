@@ -6,8 +6,6 @@ namespace ClassLibrary.Model
 {
     public class Box : DimensionsBase, IBox
     {
-
-
         public Box(string id, DateOnly? expirationDate, DateOnly? productionDate, int countDay, 
                          double length, double height, double width, double scale) 
                      : base(length, height, width, scale)
@@ -81,5 +79,12 @@ namespace ClassLibrary.Model
             return this.Scale;
         }
         #endregion
+
+        public override string ToString()
+        {
+            return $"Box id {Id}, {base.ToString()},  Volume: {base.Volume}, Scale: {base.Scale}, ExpirationDate {ExpirationDate.ToString()}," +
+                $"  ProductionDate: {ProductionDate?.ToString()}" ;
+        }
+
     }
 }

@@ -52,6 +52,9 @@
         public abstract DateOnly ExpirationDate { get; set; }
 
 
-
+        public override string ToString()
+        {
+            return $"Length: {Length}, Width: {Width}, Height: {Height},";
+        }
     }
 }
