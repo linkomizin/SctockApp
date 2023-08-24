@@ -1,12 +1,5 @@
 ﻿using ClassLibrary.Model;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
 
 namespace ClassLibrary.ViewHandler
 {
@@ -40,13 +33,13 @@ namespace ClassLibrary.ViewHandler
 
         public void DisplayPalletDict(Dictionary<DateOnly, List<Pallet>> palDict)
         {
-            foreach(KeyValuePair<DateOnly, List<Pallet>> set in palDict)
+            foreach (KeyValuePair<DateOnly, List<Pallet>> set in palDict)
             {
-                Console.WriteLine($"Date pallet: {set.Key}\n");
+                Console.WriteLine($"Expiration Date pallet: {set.Key}\n");
                 DisplayPallet(set.Value);
 
             }
-           
+
         }
 
     }

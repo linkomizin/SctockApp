@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary.Model
+﻿namespace ClassLibrary.Model
 {
     public class Pallet : DimensionsBase
     {
@@ -64,7 +58,7 @@ namespace ClassLibrary.Model
             {
                 return _boxes
                     .AsParallel()
-                    .Max(el=>el.ExpirationDate);
+                    .Max(el => el.ExpirationDate);
             }
             set { _ = value; }
         }

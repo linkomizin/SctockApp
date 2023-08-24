@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClassLibrary.GeneratorObject;
+﻿using ClassLibrary.GeneratorObject;
 using ClassLibrary.Model;
 using ClassLibrary.Services;
 using ClassLibrary.Sorter;
@@ -27,7 +22,7 @@ namespace ClassLibrary.Worker
 
         private ISorter<Pallet> _sorter;
 
-        
+
         public WorkerStock(MakerBox makerBox, MakerPallet makerPallet,
             List<Box> boxList, List<Pallet> palletList,
             ICanAddpallet canAddpallet, IViewHandler viewHandler, IPalletWorker palletWorker, ISorter<Pallet> sorter)
@@ -50,7 +45,7 @@ namespace ClassLibrary.Worker
 
         public void AddBoxesToPallets(int countBoxToPallet = 10)
         {
-            _palletWorker.CanAddPallet = _canAddpallet; 
+            _palletWorker.CanAddPallet = _canAddpallet;
             for (int i = 0; i < _palletList.Count(); i++)
             {
                 _palletWorker.SelectedPallet = _palletList[i];
@@ -81,18 +76,19 @@ namespace ClassLibrary.Worker
         public void GroupPalletSet()
         {
             _datePalletsDict = _sorter.GroupByMin(_palletList);
+            ViewPallet(_datePalletsDict);
         }
         public void TakeCountPalletByMaxDate()
         {
             var res = _sorter.TakeCountPalletByMaxDate(3, _palletList);
             ViewPallet(res);
         }
-        public void ViewPallet(Dictionary<DateOnly, List<Pallet>> datePalletsDict)
+        private void ViewPallet(Dictionary<DateOnly, List<Pallet>> datePalletsDict)
         {
             _viewHandler.DisplayPallet(datePalletsDict);
         }
 
-        public void ViewPallet(List<Pallet> pallets)
+        private void ViewPallet(List<Pallet> pallets)
         {
             _viewHandler.DisplayPallet(pallets);
         }

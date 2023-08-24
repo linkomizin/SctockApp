@@ -1,9 +1,4 @@
 ﻿using ClassLibrary.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary.Sorter
 {
@@ -47,7 +42,7 @@ namespace ClassLibrary.Sorter
         public List<Pallet> TakeCountPalletByMaxDate(int count, IEnumerable<Pallet> values)
         {
             var res = values
-                .OrderByDescending(x=>x.ExpirationDate)
+                .OrderByDescending(x => x.ExpirationDate)
                 .Take(count)
                 .ToList();
             return res;

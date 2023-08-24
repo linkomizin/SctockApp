@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary.Repository
+﻿namespace ClassLibrary.Repository
 {
     public interface IRepositoryBase<T> where T : class
     {
@@ -12,7 +6,7 @@ namespace ClassLibrary.Repository
         T Add(T item);
         void Update(T item);
         void Delete(string id);
-        
+
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Func<T, bool> predicate);
 

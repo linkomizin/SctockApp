@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClassLibrary.Model;
+﻿using ClassLibrary.Model;
 
 namespace ClassLibrary.Services
 {
@@ -25,7 +20,7 @@ namespace ClassLibrary.Services
             get => _pallet;
             set => _pallet = value;
         }
-  
+
         public bool AddBox(Box box)
         {
 

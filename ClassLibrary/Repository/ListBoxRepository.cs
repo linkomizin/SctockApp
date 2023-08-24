@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClassLibrary.Model;
+﻿using ClassLibrary.Model;
 
 namespace ClassLibrary.Repository
 {
@@ -62,10 +57,10 @@ namespace ClassLibrary.Repository
 
         public IEnumerable<Box> Find(Func<Box, bool> predicate)
         {
-           return Boxes
-               .AsParallel()
-               .Where(predicate)
-               .AsEnumerable();
+            return Boxes
+                .AsParallel()
+                .Where(predicate)
+                .AsEnumerable();
         }
 
         public bool Any(Func<Box, bool> predicate)

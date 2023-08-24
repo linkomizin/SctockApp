@@ -5,7 +5,6 @@ using ClassLibrary.Services;
 using ClassLibrary.Sorter;
 using ClassLibrary.ViewHandler;
 using ClassLibrary.Worker;
-using System.Runtime.CompilerServices;
 
 namespace ConsoleApp
 {
@@ -23,7 +22,12 @@ namespace ConsoleApp
 
             workerStock.AddBoxesToPallets(8);
 
+            workerStock.GroupPalletSet();
+
+            Console.WriteLine("\n\n______-------______------_____-----_____\n\n");
             workerStock.TakeCountPalletByMaxDate();
+
+
         }
 
 
